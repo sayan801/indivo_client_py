@@ -52,21 +52,21 @@ demographics =  '<Demographics xmlns="http://indivo.org/vocab/xml/documents#"><d
 res, content = api.record_create(body=demographics)
 status = res['status']
     
-    # success, parse XML and change owner to current user
-    if '200' == status:
-        tree = ET.fromstring(content or '<Record/>')
-        if tree is not None:
-            record_id = tree.attrib.get('id')
-            res, content = api.record_set_owner(record_id=record_id, body=account_id, content_type='text/plain')
-            status = res['status']
-            if '200' == status:
-                print "Added record to: %s "%user
-            else:
-                print "Failed to add record to: %s "%user
-        else:
-            print "Record id not found: %s "%user
-    else:
-        print "Failed Create record to: %s "%user
+# success, parse XML and change owner to current user
+if '200' == status:
+	tree = ET.fromstring(content or '<Record/>')
+	if tree is not None:
+		record_id = tree.attrib.get('id')
+		res, content = api.record_set_owner(record_id=record_id, body=account_id, content_type='text/plain')
+		status = res['status']
+		if '200' == status:
+			print "Added record to: %s "%user
+		else:
+			print "Failed to add record to: %s "%user
+	else:
+		print "Record id not found: %s "%user
+else:
+	print "Failed Create record to: %s "%user
 
 
 #print "Session info: %s"%content
