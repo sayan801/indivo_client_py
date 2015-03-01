@@ -28,6 +28,3 @@ resp, content = client.session_create({'username' : 'csengupta', 'password' : 'p
 print "Session info: %s"%content
 print "Session_info Response object looks like: %s"%resp
    
-resp, content = client.account_info()
-print "Account info: %s"%content
-print "account_info Response object looks like: %s"%resp
