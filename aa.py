@@ -1,6 +1,23 @@
 from client import IndivoClient
 from xml.dom import minidom as XML
 
+import sys, string, os
+
+length = len(sys.argv)
+
+print "Parameters: %s"%length
+
+if length != 3 :
+    raise Exception("Pass Username and password as argument")
+
+user = sys.argv[1]
+
+print "Indivo User: %s"%user
+
+password = sys.argv[2]
+
+print "Indivo Password: %s"%password
+
 # Need to pass these in to the client
 SERVER_PARAMS = {"api_base": "http://login.mycuratio.com:8000",
                  "authorization_base": "http://login.mycuratio.com"}
@@ -24,7 +41,7 @@ print "Indivo Version: %s"%content
 
 
 
-resp, content = client.session_create({'username' : 'csengupta', 'password' : 'password'})
+resp, content = client.session_create({'username' : user , 'password' : password})
 print "Session info: %s"%content
 print "Session_info Response object looks like: %s"%resp
    
