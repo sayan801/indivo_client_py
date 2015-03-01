@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from client import IndivoClient
 from xml.dom import minidom as XML
 
@@ -43,5 +45,5 @@ print "Indivo Version: %s"%content
 
 resp, content = client.session_create({'username' : user , 'password' : password})
 print "Session info: %s"%content
-print "Session_info Response object looks like: %s"%resp
+#print "Session_info Response object looks like: %s"%resp
    
