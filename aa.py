@@ -50,7 +50,7 @@ account_id =  result['account_id']
 
 demographics =  '<Demographics xmlns="http://indivo.org/vocab/xml/documents#"><dateOfBirth>1939-11-15</dateOfBirth><gender>female</gender><email>rabin.mohan@gmail.com</email><Name><familyName>mohan</familyName><givenName>rabin</givenName></Name></Demographics>'
 res, content = api.record_create(body=demographics)
-    status = res['status']
+status = res['status']
     
     # success, parse XML and change owner to current user
     if '200' == status:
