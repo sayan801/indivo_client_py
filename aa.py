@@ -3,6 +3,8 @@
 from client import IndivoClient
 from xml.dom import minidom as XML
 
+import xml.etree.ElementTree as ET
+
 import sys, string, os
 
 length = len(sys.argv)
@@ -54,20 +56,27 @@ if resp['status'] != '200':
 result =  dict(item.split("=") for item in content.split("&"))	
 account_id =  result['account_id']
 
+print "Account id %s "%account_id
+
 demographics =  '<Demographics xmlns="http://indivo.org/vocab/xml/documents#"><dateOfBirth>'+ dob +
 '</dateOfBirth><gender>'+gender+
 '</gender><email>'+email+'</email><Name><familyName>'+familyname+'</familyName><givenName>'+givenname+'</givenName></Name></Demographics>'
+
 print "demographics :%s"%demographics
-res, content = api.record_create(body=demographics)
+
+res, content = client.record_create(body=demographics)
 status = res['status']
-    
+
+print "Record Create info: %s"%content
+
 # success, parse XML and change owner to current user
 if '200' == status:
 	tree = ET.fromstring(content or '<Record/>')
 	if tree is not None:
 		record_id = tree.attrib.get('id')
-		res, content = api.record_set_owner(record_id=record_id, body=account_id, content_type='text/plain')
+		res, content = client.record_set_owner(record_id=record_id, body=account_id, content_type='text/plain')
 		status = res['status']
+		print "Record Set Owner info: %s"%content
 		if '200' == status:
 			print "Added record to: %s "%user
 		else:
