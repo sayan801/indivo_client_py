@@ -9,8 +9,8 @@ length = len(sys.argv)
 
 print "Parameters: %s"%length
 
-if length != 3 :
-    raise Exception("Pass Username and password as argument")
+if length != 8 :
+    raise Exception("Usage: Python Filename Username password givenname familyname email gender dob")
 
 user = sys.argv[1]
 
@@ -19,6 +19,12 @@ print "Indivo User: %s"%user
 password = sys.argv[2]
 
 print "Indivo Password: %s"%password
+
+givenname  = sys.argv[3]
+familyname  = sys.argv[4]
+email  = sys.argv[5]
+gender = sys.argv[6]
+dob = sys.argv[7]
 
 # Need to pass these in to the client
 SERVER_PARAMS = {"api_base": "http://login.mycuratio.com:8000",
@@ -48,7 +54,10 @@ if resp['status'] != '200':
 result =  dict(item.split("=") for item in content.split("&"))	
 account_id =  result['account_id']
 
-demographics =  '<Demographics xmlns="http://indivo.org/vocab/xml/documents#"><dateOfBirth>1939-11-15</dateOfBirth><gender>female</gender><email>rabin.mohan@gmail.com</email><Name><familyName>mohan</familyName><givenName>rabin</givenName></Name></Demographics>'
+demographics =  '<Demographics xmlns="http://indivo.org/vocab/xml/documents#"><dateOfBirth>'+ dob +
+'</dateOfBirth><gender>'+gender+
+'</gender><email>'+email+'</email><Name><familyName>'+familyname+'</familyName><givenName>'+givenname+'</givenName></Name></Demographics>'
+print "demographics :%s"%demographics
 res, content = api.record_create(body=demographics)
 status = res['status']
     
