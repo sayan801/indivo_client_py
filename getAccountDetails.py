@@ -52,8 +52,11 @@ account_id =  result['account_id']
 
 print "Account id %s "%account_id
 
-resp, content = api.account_info(account_email = account_id)
+resp, content = client.account_info(account_email = account_id)
 
 if resp['status'] != '200':
     raise Exception("Bad Status: %s"%resp['status'])
+
+print "Response Details: %s"%resp
+
 print "Account Details: %s"%content
