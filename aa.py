@@ -58,7 +58,9 @@ account_id =  result['account_id']
 
 print "Account id %s "%account_id
 
-demographics =  '<Demographics xmlns="http://indivo.org/vocab/xml/documents#"><dateOfBirth>'+ dob + '</dateOfBirth><gender>'+ gender +  '</gender><email>' + email + '</email><Name><familyName>' + familyname + '</familyName><givenName>' + givenname + '</givenName></Name></Demographics>'
+xmlStart = '<Demographics xmlns="http://indivo.org/vocab/xml/documents#">'
+
+demographics =  "%s<dateOfBirth>%s</dateOfBirth><gender>%s</gender><email>%s</email><Name><familyName>%s</familyName><givenName>%s</givenName></Name></Demographics>"%(xmlStart,dob,gender,email,familyname,givenname)
 
 print "demographics :%s"%demographics
 
