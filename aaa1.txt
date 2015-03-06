@@ -1,0 +1,10 @@
+Parameters: 8
+Indivo User: csengupta
+Indivo Password: password
+Indivo Version: 2.0.0
+Account id chandra.sengupta%40mycuratio.com 
+demographics :<Demographics xmlns="http://indivo.org/vocab/xml/documents#"><dateOfBirth>1950-01-01</dateOfBirth><gender>male</gender><email>sayan801@hotmail.com</email><Name><familyName>dey</familyName><givenName>bidesh</givenName></Name></Demographics>
+Record Create info: <?xml version="1.0" encoding="utf-8" ?><Record id="fa285c96-6ef4-41a8-ae25-db358c8bd1a6" label="bidesh dey"><demographics document_id="c9194c21-0625-41ea-8d71-45f48d4b9835" /><created at="2015-03-06T05:22:06.546350Z" by="chrome@apps.indivo.org" /></Record>
+
+Record Set Owner info: 
+Failed to add record to: csengupta 
