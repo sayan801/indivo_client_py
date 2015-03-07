@@ -25,8 +25,10 @@ print "Indivo Password: %s"%password
 # Need to pass these in to the client
 SERVER_PARAMS = {"api_base": "http://login.mycuratio.com:8000",
                  "authorization_base": "http://login.mycuratio.com"}
-CONSUMER_PARAMS = {"consumer_key": "curatehealth",
-                   "consumer_secret": "curatehealth"}
+#CONSUMER_PARAMS = {"consumer_key": "curatehealth",
+#                   "consumer_secret": "curatehealth"}
+CONSUMER_PARAMS = {"consumer_key": "indivoadmin",
+                   "consumer_secret": "indivoadminsecret"}
 
 # If we already had a token (access token, request token, or session token), it should be formatted
 # like this. We won't use this in the example.
@@ -39,8 +41,8 @@ client = IndivoClient(SERVER_PARAMS, CONSUMER_PARAMS)
 
 # make the get_version call, and print it out
 resp, content = client.get_version(body={'a':'b', 'c':'d'})
-if resp['status'] != '200':
-    raise Exception("Bad Status: %s"%resp['status'])
+#if resp['status'] != '200':
+#   raise Exception("Bad Status: %s"%resp['status'])
 print "Indivo Version: %s"%content
 
 
@@ -54,8 +56,8 @@ print "Account id %s "%account_id
 
 resp, content = client.account_info(account_email = account_id)
 
-if resp['status'] != '200':
-    raise Exception("Bad Status: %s"%resp['status'])
+#if resp['status'] != '200':
+#    raise Exception("Bad Status: %s"%resp['status'])
 
 print "Response Details: %s"%resp
 
