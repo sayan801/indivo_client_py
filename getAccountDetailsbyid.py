@@ -11,57 +11,34 @@ length = len(sys.argv)
 
 print "Parameters: %s"%length
 
-if length != 2 :
-    raise Exception("Usage: Python Filename Username password")
+if length != 4 :
+    raise Exception("Usage: Python Filename accound_id consumer_key consumer_secret")
 
-user = sys.argv[1]
+accound_id = sys.argv[1]
 
-print "Indivo User: %s"%user
+print "accound_id: %s"%accound_id
 
-#password = sys.argv[2]
+consumer_key = sys.argv[2]
 
-#print "Indivo Password: %s"%password
+print "consumer_key: %s"%consumer_key
+
+consumer_secret = sys.argv[3]
+
+print "consumer_secret: %s"%consumer_secret
+
 
 # Need to pass these in to the client
 SERVER_PARAMS = {"api_base": "http://login.mycuratio.com:8000",
                  "authorization_base": "http://login.mycuratio.com"}
-#CONSUMER_PARAMS = {"consumer_key": "curatehealth",
-#                  "consumer_secret": "curatehealth"}
-CONSUMER_PARAMS = {"consumer_key": "indivoadmin",
-                   "consumer_secret": "indivoadminsecret"}
 
-# If we already had a token (access token, request token, or session token), it should be formatted
-# like this. We won't use this in the example.
-RESOURCE_TOKEN = {"oauth_token": "asdfdsfa",
-                  "oauth_token_secret": "adfasdf"}
+CONSUMER_PARAMS = {"consumer_key": consumer_key,
+                   "consumer_secret": consumer_secret}
 
 # Set up the client (with no token): two-legged oauth only
 client = IndivoClient(SERVER_PARAMS, CONSUMER_PARAMS)
-#                      , pha_email=CONSUMER_PARAMS["consumer_key"])
-
-# make the get_version call, and print it out
-#resp, content = client.get_version(body={'a':'b', 'c':'d'})
-#if resp['status'] != '200':
-#   raise Exception("Bad Status: %s"%resp['status'])
-#print "Indivo Version: %s"%content
-
-
-#resp, content = client.session_create({'username' : user , 'password' : password})
-#if resp['status'] != '200':
-#    raise Exception("Bad Status: %s"%resp['status'])
-#print "resp %s "%resp
-#print "content %s "%content
-
-#result =  dict(item.split("=") for item in content.split("&"))	
-#account_id =  result['account_id']
-
-#print "Account id %s "%account_id
 
 resp, content = client.account_info(account_email = user)
 
-#if resp['status'] != '200':
-#    raise Exception("Bad Status: %s"%resp['status'])
+print "Response Details: %s\n"%resp
 
-print "Response Details: %s"%resp
-
-print "Account Details: %s"%content
+print "%s"%content
