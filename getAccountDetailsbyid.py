@@ -37,7 +37,7 @@ CONSUMER_PARAMS = {"consumer_key": consumer_key,
 # Set up the client (with no token): two-legged oauth only
 client = IndivoClient(SERVER_PARAMS, CONSUMER_PARAMS)
 
-resp, content = client.account_info(account_email = user)
+resp, content = client.account_info(account_email = accound_id )
 
 print "Response Details: %s\n"%resp
 
