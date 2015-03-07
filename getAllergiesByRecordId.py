@@ -37,7 +37,8 @@ CONSUMER_PARAMS = {"consumer_key": consumer_key,
                    "consumer_secret": consumer_secret}
 
 # Set up the client (with no token): two-legged oauth only
-client = IndivoClient(SERVER_PARAMS, CONSUMER_PARAMS)
+#client = IndivoClient(SERVER_PARAMS, CONSUMER_PARAMS)
+client = IndivoClient(SERVER_PARAMS, CONSUMER_PARAMS, pha_email=CONSUMER_PARAMS["consumer_key"])
 
 resp, content = client.smart_allergies(record_id = record_id )
 
