@@ -46,6 +46,7 @@ print "Indivo Version: %s"%content
 
 
 resp, content = client.session_create({'username' : user , 'password' : password})
+print "%s "%content
 if resp['status'] != '200':
     raise Exception("Bad Status: %s"%resp['status'])
 result =  dict(item.split("=") for item in content.split("&"))	

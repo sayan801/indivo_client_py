@@ -3,6 +3,8 @@
 from client import IndivoClient
 from xml.dom import minidom as XML
 
+import xmltodict, json
+
 import xml.etree.ElementTree as ET
 
 import sys, string, os
@@ -42,3 +44,12 @@ resp, content = client.account_info(account_email = accound_id )
 print "Response Details: %s\n"%resp
 
 print "%s"%content
+
+o = xmltodict.parse(content)
+
+print "%s"%json.dumps(o)
+
+#tree = ET.fromstring(content or '<Account/>')
+#if tree is not None:
+# record_id = tree.attrib.get('id')
+# print "Record id %s "%record_id
